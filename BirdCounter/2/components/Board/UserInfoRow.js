@@ -44,7 +44,7 @@ export default class UserInfoRow extends React.Component {
                     <View style={{height: '50%'}}>
                         <Text style={[styles.text, styles.dataText]}>{userInfo.numBirds}</Text>
                     </View>
-                    <Text style={[styles.text, styles.staticText]}>Birds</Text>
+                    <Text style={[styles.text, styles.staticText]}>    Birds    </Text>
 
                 </View>
 
@@ -56,7 +56,7 @@ export default class UserInfoRow extends React.Component {
                         <Text style={[styles.text, styles.dataText]}>{userInfo.numObservations}</Text>
                     </View>
                     
-                    <Text style={[styles.text, styles.staticText]}>Observations</Text>
+                    <Text style={[styles.text, styles.staticText]}>Observations </Text>
 
                 </View>
 

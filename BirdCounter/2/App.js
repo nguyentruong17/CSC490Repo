@@ -7,15 +7,18 @@ import Observations from './screens/Observations'
 import EditBird from './screens/EditBird'
 import EditProfile from './screens/EditProfile'
 
+import RandomNumberGenerator from './utils/RandomNumberGenerator'
+
 import uuidv4 from 'uuid/v4'
 
-const bird0 = uuidv4();
-const bird1 = uuidv4();
-const bird2 = uuidv4();
-const bird3 = uuidv4();
-const bird4 = uuidv4();
-const bird5 = uuidv4();
-const bird6 = uuidv4();
+const numBirds = 20
+let ids = []
+
+    for (let i=0; i < numBirds; i++){
+        ids.push(uuidv4())
+}
+
+const maxObservationsEachBirds = 15
 
 
 
@@ -24,38 +27,128 @@ export default class App extends React.Component{
         super(props);
         this.state = {
             birds: {
-                [bird0]: {
-                    id: bird0,
+                [ids[0]]: {
+                    id: ids[0],
                     name: 'Loon',
                     imgScr: require('./assets/loon.jpg'),
-                    timesObserved: 15
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
                 },
-                [bird1]: {
-                    id: bird1,
+                [ids[1]]: {
+                    id: ids[1],
                     name: 'Merlin',
                     imgScr: require('./assets/merlin.jpg'),
-                    timesObserved: 2
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
                 },
-                [bird2]: {
-                    id: bird2,
+                [ids[2]]: {
+                    id: ids[2],
                     name: 'Nighthawk',
                     imgScr: require('./assets/nighthawk.jpg'),
-                    timesObserved: 3
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
                 },
-                [bird3]: {
-                    id: bird3,
+                [ids[3]]: {
+                    id: ids[3],
                     name: 'Oriole',
                     imgScr: require('./assets/oriole.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                    
                 },
-                [bird4]: {
-                    id: bird4,
+                [ids[4]]: {
+                    id: ids[4],
                     name: 'Puffin',
                     imgScr: require('./assets/puffin.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
                 },
-                [bird5]: {
-                    id: bird5,
+                [ids[5]]: {
+                    id: ids[5],
                     name: 'Quail',
                     imgScr: require('./assets/quail.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+
+                [ids[6]]: {
+                    id: ids[6],
+                    name: 'Razorbill',
+                    imgScr: require('./assets/razorbill.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[7]]: {
+                    id: ids[7],
+                    name: 'Skimmer',
+                    imgScr: require('./assets/skimmer.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[8]]: {
+                    id: ids[8],
+                    name: 'Tanager',
+                    imgScr: require('./assets/tanager.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[9]]: {
+                    id: ids[9],
+                    name: 'Uguisu',
+                    imgScr: require('./assets/uguisu.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[10]]: {
+                    id: ids[10],
+                    name: 'Violetear',
+                    imgScr: require('./assets/violetear.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[11]]: {
+                    id: ids[11],
+                    name: 'Woodpecker',
+                    imgScr: require('./assets/woodpecker.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+
+                [ids[12]]: {
+                    id: ids[12],
+                    name: 'Xenops',
+                    imgScr: require('./assets/xenops.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[13]]: {
+                    id: ids[13],
+                    name: 'Yellowlegs',
+                    imgScr: require('./assets/yellowlegs.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[14]]: {
+                    id: ids[14],
+                    name: 'Zanzibar',
+                    imgScr: require('./assets/zanzibar.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[15]]: {
+                    id: ids[15],
+                    name: 'Anhinga',
+                    imgScr: require('./assets/anhinga.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[16]]: {
+                    id: ids[16],
+                    name: 'Bluebird',
+                    imgScr: require('./assets/bluebird.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[17]]: {
+                    id: ids[17],
+                    name: 'Chickadee',
+                    imgScr: require('./assets/chickadee.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[18]]: {
+                    id: ids[18],
+                    name: 'Dove',
+                    imgScr: require('./assets/dove.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
+                },
+                [ids[19]]: {
+                    id: ids[19],
+                    name: 'Egret',
+                    imgScr: require('./assets/egret.jpg'),
+                    timesObserved: RandomNumberGenerator(maxObservationsEachBirds)+1
                 },
             },
             userInfo: {
