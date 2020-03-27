@@ -1,0 +1,32 @@
+{
+  "donors" : {
+    "brysonadcock16augustanaedu" : {
+      "amount" : 68,
+      "email" : "brysonadcock16@augustana.edu"
+    },
+    "forreststonedahlaugustanaedu" : {
+      "amount" : 100,
+      "email" : "forreststonedahl@augustana.edu"
+    },
+    "jmreabangmailcom" : {
+      "amount" : 1,
+      "email" : "jmreaban@gmail.com"
+    },
+    "maeganpatterson16augustanaedu" : {
+      "amount" : 70,
+      "email" : "maeganpatterson16@augustana.edu"
+    },
+    "motconvithaicanhcom" : {
+      "amount" : 50,
+      "email" : "motconvit@haicanh.com"
+    },
+    "nguyentruong17augustanaedu" : {
+      "amount" : 100,
+      "email" : "nguyentruong17@augustana.edu"
+    }
+  },
+  "stats" : {
+    "totalDonors" : 6,
+    "totalMoney" : 389
+  }
+}

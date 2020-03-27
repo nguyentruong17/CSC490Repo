@@ -1,0 +1,12 @@
+{
+	"donors": {
+		"nguyentruong17augustanaedu": {
+			"email": "nguyentruong17@augustana.edu",
+			"amount": 100
+		}
+	},
+	"stats": {
+		"totalDonors": 1,
+		"totalMoney": 100.00
+	}
+}
