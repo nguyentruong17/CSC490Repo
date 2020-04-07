@@ -7,7 +7,6 @@ import {
     DEBRIS_SPAN,
     PADDING,
     DEBRIS_SHAPES,
-    DEBRIS_SETTINGS,
 } from '../../consts'
 
 export default createBody = (props) => {
@@ -19,7 +18,6 @@ export default createBody = (props) => {
     const { yPos } = position
 
     const newSettings = {
-        ...DEBRIS_SETTINGS,
         ...settings,
         type: shape,
     }
