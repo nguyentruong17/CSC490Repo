@@ -1,16 +1,25 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin')
 admin.initializeApp()
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
 
+const express = require('express')
+const app = express()
 
-exports.getItems = functions.https.onRequest((req, res) => {
-    admin.firestore().collection('items').get()
+app.get('/items', (req, res) => {
+    admin.firestore()
+        .collection('items')
+        .orderBy('createdAt', 'desc')
+        .get()
         .then( data => {
             let items = []
             data.forEach(doc => {
-                items.push(doc.data())
+                items.push({
+                    itemId: doc.id,
+                    body: doc.data().body,
+                    userHandle: doc.data().userHandle,
+                    createdAt: doc.data().createdAt
+
+                })
             })
 
             return res.json(items);
@@ -20,11 +29,11 @@ exports.getItems = functions.https.onRequest((req, res) => {
         })
 })
 
-exports.createItem = functions.https.onRequest((req, res) => {
+app.post('/item', (req, res) => {
     const newItem = {
         body: req.body.body,
         userHandle: req.body.userHandle,
-        createdAt: admin.firestore.Timestamp.fromDate(new Date()) 
+        createdAt: new Date().toISOString() 
     }
     admin.firestore()
         .collection('items')
@@ -37,3 +46,6 @@ exports.createItem = functions.https.onRequest((req, res) => {
             console.error(err)
         })
 })
+
+// https:/baseurl.com/api/ --> good convention
+exports.api = functions.https.onRequest(app);
