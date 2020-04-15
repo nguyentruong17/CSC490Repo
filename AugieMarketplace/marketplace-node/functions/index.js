@@ -1,51 +1,16 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admin')
-admin.initializeApp()
 
 const express = require('express')
 const app = express()
+app.use(express.json())
 
-app.get('/items', (req, res) => {
-    admin.firestore()
-        .collection('items')
-        .orderBy('createdAt', 'desc')
-        .get()
-        .then( data => {
-            let items = []
-            data.forEach(doc => {
-                items.push({
-                    itemId: doc.id,
-                    body: doc.data().body,
-                    userHandle: doc.data().userHandle,
-                    createdAt: doc.data().createdAt
+const { getAllItems, postOneItem } = require('./handlers/item')
+const { GAuth } = require('./utils/auth')
 
-                })
-            })
+//items route
+app.get('/items', getAllItems)
+app.post('/item', GAuth, postOneItem)
 
-            return res.json(items);
-        })
-        .catch(err => {
-            console.log(err)
-        })
-})
-
-app.post('/item', (req, res) => {
-    const newItem = {
-        body: req.body.body,
-        userHandle: req.body.userHandle,
-        createdAt: new Date().toISOString() 
-    }
-    admin.firestore()
-        .collection('items')
-        .add(newItem)
-        .then(doc => {
-            res.json({ messeage: `document ${doc.id} created successfully`})
-        })
-        .catch(err => {
-            res.status(500).json({ error: 'server went wrong'})
-            console.error(err)
-        })
-})
 
 // https:/baseurl.com/api/ --> good convention
 exports.api = functions.https.onRequest(app);
