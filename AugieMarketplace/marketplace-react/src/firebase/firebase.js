@@ -3,14 +3,6 @@ import "firebase/auth";
 import "firebase/firestore";
 import config from './config'
 
-/*
- *
- * Go to your Firebase console and enable Google auth for your project.
- * 
- * To get firebaseConfig, click the gear icon and go to "Project Settings".
- * Under "General", go to "Your apps" and add a web app.
- * 
- */
 var firebaseConfig = {
    ...config
 };
@@ -46,10 +38,12 @@ export async function signInWithGoogle() {
 
                   return db.doc(`/users/${email}`).set(userCredentials);
             }
-            return 'LogIn'
+            return 'LogIn' 
+            //TODO: how to handle this like (req, res) in server side?
         })
         
           .catch((err) => {
             console.error(err);
+            //TODO: how to handle this like (req, res) in server side?
           })
 }
