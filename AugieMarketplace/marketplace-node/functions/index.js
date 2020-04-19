@@ -5,7 +5,7 @@ const app = express()
 
 const { GAuth } = require('./utils/auth')
 const { getAllItems, postOneItem } = require('./handlers/items')
-const { uploadImage, updateInfo } = require('./handlers/users')
+const { uploadImage, updateInfo, getAuthenticatedUser } = require('./handlers/users')
 
 
 //items route
@@ -15,6 +15,7 @@ app.post('/item', GAuth, postOneItem)
 // users routes
 app.post('/user/image', GAuth, uploadImage);
 app.post('/user', GAuth, updateInfo);
+app.get('/user', GAuth, getAuthenticatedUser);
 
 
 // https:/baseurl.com/api/ --> good convention
