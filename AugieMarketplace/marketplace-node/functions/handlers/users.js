@@ -31,17 +31,10 @@ exports.uploadImage = (req, res) => {
       return res.status(400).json({ error: "Wrong file type submitted" });
     }
 
-    //TODO: right now, this works, but it still uploads the file to the server
-    // file.on('limit', () => {
-    //   return res.status(400).json({ error: "File Size Limit Exceeded: 6MB max" });
-    // });
-
     const imageExtension = filename.split(".").pop();
     imageFileName = `${imageFileName}.${imageExtension}`;
     const filepath = path.join(os.tmpdir(), imageFileName); //because we're doing through cloud environment
-    file.on('limit', () => {
-      
-
+    file.on("limit", () => {
       //delete the file that is large in size
       fs.unlink(filepath, (err) => {
         if (err) {
@@ -49,9 +42,7 @@ exports.uploadImage = (req, res) => {
           return res.status(500).json({ error: "something went wrong" });
         }
       });
-      return res.status(400).json({ error: "File Size Limit Exceeded" })
-
-      ;
+      return res.status(400).json({ error: "File Size Limit Exceeded" });
     });
     imageToBeUploaded = { filepath, mimetype };
     file.pipe(fs.createWriteStream(filepath));
@@ -143,8 +134,7 @@ exports.getAuthenticatedUser = (req, res) => {
         userData.likes.push(doc.data());
       });
 
-      return res.json(userData)
-      
+      return res.json(userData);
     })
     .catch((err) => {
       console.error(err);

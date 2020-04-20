@@ -4,13 +4,24 @@ const express = require('express')
 const app = express()
 
 const { GAuth } = require('./utils/auth')
-const { getAllItems, postOneItem } = require('./handlers/items')
-const { uploadImage, updateInfo, getAuthenticatedUser } = require('./handlers/users')
+
+const { getAllItems, 
+    postOneItem, 
+    getOneItem,
+    updateOneItem,
+    deleteOneItem } = require('./handlers/items')
+    
+const { uploadImage, 
+    updateInfo, 
+    getAuthenticatedUser } = require('./handlers/users')
 
 
 //items route
 app.get('/items', getAllItems)
 app.post('/item', GAuth, postOneItem)
+app.get('/item/:itemId', getOneItem)
+app.post('/item/:itemId', GAuth, updateOneItem)
+app.delete('/item/:itemId', GAuth, deleteOneItem)
 
 // users routes
 app.post('/user/image', GAuth, uploadImage);
